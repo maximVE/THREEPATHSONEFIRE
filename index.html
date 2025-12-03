@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Three Paths, One Fire</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A quiet, reflective story experience about finding purpose in a changing world."
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="fade-overlay"></div>
+    <div class="landing">
+      <!-- 🔥 FIXED: Video now belongs ONLY to landing page -->
+      <div class="video-container">
+        <video class="background-video" autoplay muted loop playsinline>
+          <source src="Campfire.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <!-- END FIX -->
+
+      <div class="landing-inner">
+        <p class="landing-label">Interactive story experience</p>
+        <h1 class="landing-title">Three Paths,<br />One Fire</h1>
+        <p class="landing-subtitle">
+          A quiet space to pause, breathe, and explore one possible version of
+          your life.
+        </p>
+
+        <button class="landing-button" id="beginBtn">Begin the journey</button>
+      </div>
+
+      <div class="landing-hint">
+        <span class="hint-dot"></span>
+        <span class="hint-text">Scroll or tap “Begin” to continue</span>
+      </div>
+    </div>
+
+    <!-- 🔥 NEW INFO SECTION (appears after landing) -->
+    <section id="info-section" class="info-section">
+      <div class="info-inner" id="infoContent">
+        <h2>Before We Begin</h2>
+        <p>
+          This experience invites you to pause and walk one quiet path. When you
+          feel ready, we’ll begin together.
+        </p>
+
+        <button class="start-story-btn" id="startStoryBtn">
+          Start the story
+        </button>
+      </div>
+
+      <!-- NEW: countdown + typing area -->
+      <div class="info-transition hidden" id="infoTransition">
+        <div id="countdown">10</div>
+        <p id="typingText"></p>
+      </div>
+    </section>
+
+    <!-- STORY ROOT (unchanged) -->
+    <main id="story-root">
+      <section id="story-selection" class="story-selection">
+        <h2 class="story-title">Which story will you choose?</h2>
+
+        <div class="story-cards">
+          <div
+            class="story-card"
+            id="card-drifter"
+            data-target="gamerpath/gamerpath.html"
+          >
+            <h3 id="before">The Drifter</h3>
+            <div class="story-overlay">
+              <h3>The Drifter</h3>
+              <p>A life shaped by escape, endings, and trying again.</p>
+            </div>
+          </div>
+
+          <div
+            class="story-card"
+            id="card-settler"
+            data-target="brotherpath/brotherpath.html"
+          >
+            <h3 id="before">The Settler</h3>
+            <div class="story-overlay">
+              <h3>The Settler</h3>
+              <p>A quiet routine, a safe life — until something shifts.</p>
+            </div>
+          </div>
+
+          <div
+            class="story-card"
+            id="card-keeper"
+            data-target="fatherpath/fatherpath.html"
+          >
+            <h3 id="before">The Keeper</h3>
+            <div class="story-overlay">
+              <h3>The Keeper</h3>
+              <p>A life built on duty, weight, and unspoken sacrifice.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>
