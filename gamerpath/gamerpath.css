@@ -1,0 +1,197 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  color: #f7f7fb;
+  background: black;
+  overflow-x: hidden;
+}
+
+.full-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 🔥 Background video */
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.45);
+  z-index: 0;
+}
+
+/* TEXT LINES */
+#text-container {
+  position: absolute;
+  bottom: 15%;
+  width: 100%;
+  text-align: center;
+  font-size: 1.6rem;
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 2;
+}
+
+.line-visible {
+  opacity: 1 !important;
+}
+
+.line-hidden {
+  opacity: 0 !important;
+}
+
+/* 🔵 BREATH CIRCLE */
+#breath-container {
+  position: absolute;
+  bottom: 22%;
+  width: 100%;
+  text-align: center;
+  z-index: 5;
+}
+
+.hidden {
+  display: none;
+}
+
+.breath-label {
+  margin-bottom: 1.2rem;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+#breath-circle {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 4px solid #f6c46a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+#breath-circle span {
+  z-index: 2;
+  font-size: 1.1rem;
+}
+
+#breath-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: #f6c46a;
+  opacity: 0.7;
+  transition: height 2.5s ease;
+}
+
+/* BLACK FADE OVERLAY */
+#fade-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+  z-index: 9999;
+}
+
+#fade-overlay.active {
+  opacity: 1;
+}
+.beat-section {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1.75rem;
+  color: #f7f7fb;
+  overflow: hidden;
+}
+
+#beat2 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Background image */
+.beat2-background {
+  position: absolute;
+  inset: 0;
+  background: url("room.jpg") center/cover no-repeat;
+  filter: brightness(0.75);
+  z-index: 1;
+}
+
+/* Text */
+.beat2-text {
+  z-index: 3;
+  max-width: 650px;
+  text-align: center;
+  opacity: 0;
+}
+
+.beat2-text .line {
+  opacity: 0;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  transition: opacity 1s ease;
+}
+
+/* click hint */
+.click-hint {
+  position: absolute;
+  bottom: 3vh;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* darken overlay */
+.beat2-darken {
+  position: absolute;
+  inset: 0;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s linear;
+  z-index: 5;
+}
+
+/* Fade out beat2 when finished */
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}

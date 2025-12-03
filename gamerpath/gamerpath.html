@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Drifter — Path One</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="gamerpath.css" />
+  </head>
+  <body>
+    <!-- 🔥 Black fade overlay -->
+    <div id="fade-overlay"></div>
+
+    <!-- 🔥 SECTION 1 — INTRO -->
+    <section id="drifter-intro" class="full-section">
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="drifter.mp4" type="video/mp4" />
+      </video>
+
+      <div id="text-container"></div>
+
+      <div id="breath-container" class="hidden">
+        <p class="breath-label">Take a moment to breathe</p>
+        <div id="breath-circle">
+          <span>Hold</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="beat2" class="beat-section">
+      <div class="beat2-background"></div>
+
+      <div class="beat2-text" id="beat2Text">
+        <p class="line">You sit down and start up the game automatically.</p>
+        <p class="line">The loading screen hums like background noise.</p>
+        <p class="line">For a moment, it feels comforting.</p>
+        <p class="line">For a moment… it feels empty.</p>
+      </div>
+
+      <!-- Darkening overlay -->
+      <div id="beat2Darken" class="beat2-darken"></div>
+
+      <!-- Click prompt -->
+      <div id="beat2ClickHint" class="click-hint">Click to dim the screen</div>
+    </section>
+
+    <section id="beat3" class="beat-section beat3">
+      <!-- Beat 3 content here -->
+    </section>
+
+    <script src="gamperpath.js"></script>
+  </body>
+</html>
