@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Reflection Board</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="reflection.css" />
+  </head>
+  <body>
+    <div id="fade-overlay"></div>
+
+    <div class="main-container">
+      <!-- SECTION 1: FULL SCREEN INPUT OVERLAY -->
+      <section id="input-overlay">
+        <div class="input-content">
+          <h1>Leave a Trace</h1>
+          <p class="subtitle">What did you find in the silence?</p>
+
+          <div class="write-box">
+            <textarea
+              id="user-input"
+              maxlength="280"
+              placeholder="Write your reflection here..."
+            ></textarea>
+            <div class="action-buttons">
+              <button id="btn-discard" class="btn secondary">
+                Discard & View Board
+              </button>
+              <button id="btn-post" class="btn primary">Post Reflection</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODAL: SELECT ROLE -->
+      <div id="role-selection-modal" class="hidden">
+        <div class="modal-content">
+          <h2>Which path resonates with you?</h2>
+          <div class="role-buttons">
+            <button data-role="drifter" class="role-btn drifter">
+              The Drifter
+            </button>
+            <button data-role="settler" class="role-btn settler">
+              The Settler
+            </button>
+            <button data-role="keeper" class="role-btn keeper">
+              The Keeper
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: THE THREE COLUMNS -->
+      <div id="columns-section">
+        <!-- Drifter Column -->
+        <div class="column drifter-col">
+          <div class="col-header">
+            <h3>The Drifter</h3>
+            <p class="col-subtitle">Those who chase</p>
+          </div>
+          <!-- Independent Scroll Area -->
+          <div class="scrolling-content" id="feed-drifter"></div>
+        </div>
+
+        <!-- Settler Column -->
+        <div class="column settler-col">
+          <div class="col-header">
+            <h3>The Settler</h3>
+            <p class="col-subtitle">Those who stay</p>
+          </div>
+          <!-- Independent Scroll Area -->
+          <div class="scrolling-content" id="feed-settler"></div>
+        </div>
+
+        <!-- Keeper Column -->
+        <div class="column keeper-col">
+          <div class="col-header">
+            <h3>The Keeper</h3>
+            <p class="col-subtitle">Those who hold</p>
+          </div>
+          <!-- Independent Scroll Area -->
+          <div class="scrolling-content" id="feed-keeper"></div>
+        </div>
+      </div>
+
+      <!-- HOME LINK -->
+      <button id="btn-home">Return to Start</button>
+    </div>
+
+    <script src="reflection.js"></script>
+  </body>
+</html>
