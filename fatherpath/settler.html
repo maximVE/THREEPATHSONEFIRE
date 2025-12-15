@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Path C — The Settler</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <!-- REQUIRED: Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="settler.css" />
+  </head>
+  <body>
+    <!-- Black fade overlay -->
+    <div id="fade-overlay"></div>
+
+    <!-- BEAT 1 — THE SHOP -->
+    <section id="beat1" class="beat-section">
+      <video muted loop playsinline class="bg-video">
+        <source src="closed.mp4" type="video/mp4" />
+      </video>
+      <div class="beat-inner">
+        <div id="beat1Text" class="beat-text-block"></div>
+        <div id="latchInteraction" class="hidden">
+          <div id="latch-visual"></div>
+          <p class="click-hint">Tap to check the lock</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 2 — THE DRIVE -->
+    <section id="beat2" class="beat-section">
+      <div class="bg-image" style="background-image: url('red.png')"></div>
+      <div class="beat-inner">
+        <div id="beat2Text" class="beat-text-block"></div>
+        <div id="lightInteraction" class="hidden">
+          <div class="traffic-light">
+            <div class="light red active"></div>
+            <div class="light green"></div>
+          </div>
+          <p class="click-hint" style="margin-top: 1rem">Tap the light</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 3 — THE HOUSE -->
+    <section id="beat3" class="beat-section">
+      <video muted loop playsinline class="bg-video">
+        <source src="door.mp4" type="video/mp4" />
+      </video>
+      <div class="beat-inner">
+        <div id="beat3Text" class="beat-text-block"></div>
+        <div id="kitchenNext" class="hidden">
+          <p class="click-hint">Tap to sit down</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 4 — THE COUNTER -->
+    <section id="beat4" class="beat-section">
+      <div class="bg-image" style="background-image: url('wipe.png')"></div>
+      <div class="beat-inner">
+        <div id="beat4Text" class="beat-text-block"></div>
+        <div id="wipeInteraction" class="hidden">
+          <div id="wipe-track">
+            <div id="rag"></div>
+            <div id="wipe-hint-text">Swipe to clean</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 6 — THE PORCH -->
+    <section id="beat6" class="beat-section">
+      <video muted loop playsinline class="bg-video" id="porchVideo">
+        <source src="trash.mp4" type="video/mp4" />
+      </video>
+      <div class="beat-inner">
+        <div id="beat6Text" class="beat-text-block"></div>
+        <div id="holdInteraction" class="hidden">
+          <div class="hold-circle-outer">
+            <div class="hold-circle-inner"></div>
+          </div>
+          <p class="click-hint">Hold to walk away</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 7 — THE THRESHOLD -->
+    <section id="beat7" class="beat-section">
+      <div id="slider-container">
+        <div
+          class="layer-woods"
+          style="background-image: url('forest.png')"
+        ></div>
+        <div
+          class="layer-street"
+          id="streetLayer"
+          style="background-image: url('street.png')"
+        ></div>
+        <div id="slider-handle">
+          <div class="handle-circle">➤</div>
+        </div>
+      </div>
+      <div
+        class="beat-inner"
+        style="pointer-events: none; position: relative; z-index: 20"
+      >
+        <div id="beat7Text" class="beat-text-block"></div>
+        <div id="sliderHint" class="hidden">
+          <p class="click-hint">Drag the arrow</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 8 — THE WOODS (Video + Pull Light) -->
+    <section id="beat8" class="beat-section">
+      <!-- 🎥 UPDATED: Video instead of Image -->
+      <video muted loop playsinline class="bg-video">
+        <source src="forest.mp4" type="video/mp4" />
+      </video>
+
+      <!-- The Blue Light Overlay (Sits on top of the video) -->
+      <div id="blue-overlay"></div>
+
+      <div class="beat-inner">
+        <div id="beat8Text" class="beat-text-block"></div>
+
+        <div id="pullInteraction" class="hidden">
+          <div id="pull-track">
+            <div id="pull-handle"></div>
+          </div>
+          <p class="click-hint">Pull the light closer</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🌟 THREE.JS CONTAINER (Beat 9 & 10) -->
+    <div id="three-container"></div>
+
+    <!-- BEAT 9 — BLUE HOUR (Breathing) -->
+    <section id="beat9" class="beat-section" style="background: transparent">
+      <div class="beat-inner" style="pointer-events: none">
+        <div id="beat9Text" class="beat-text-block"></div>
+
+        <!-- Breathing Visual Interaction -->
+        <div
+          id="breatheInteraction"
+          class="hidden"
+          style="pointer-events: auto"
+        >
+          <div class="breath-circle"></div>
+          <p class="click-hint">Hold to breathe</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 10 — THE FIRE -->
+    <section id="beat10" class="beat-section" style="background: transparent">
+      <div class="beat-inner">
+        <div id="beat10Text" class="beat-text-block"></div>
+      </div>
+    </section>
+
+    <audio id="bg-music" loop>
+      <source src="ambient2.mp3" type="audio/mp3" />
+    </audio>
+
+    <script src="settler.js"></script>
+  </body>
+</html>
