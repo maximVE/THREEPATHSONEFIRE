@@ -23,7 +23,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Segoe UI", sans-serif;
   color: var(--text-main);
-  background: #000; /* 🔥 CHANGED: prevents interfering with video */
+  background: #000;
 }
 
 body {
@@ -31,8 +31,12 @@ body {
   flex-direction: column;
 }
 
-/* LANDING */
+/* --- COMMON UTILS --- */
+.hidden {
+  display: none;
+}
 
+/* --- 1. LANDING --- */
 .landing {
   min-height: 100vh;
   padding: 2.5rem 1.75rem 2rem;
@@ -43,59 +47,26 @@ body {
   overflow: hidden;
 }
 
-/* 🔥 NEW: wrapper so video stays only inside landing */
 .video-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: 0;
 }
 
-/* 🔥 UPDATED: video stays inside landing only */
 .background-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   filter: brightness(0.45);
-  z-index: 0;
 }
 
-/* Keep landing content centered above video */
 .landing-inner,
 .landing-hint {
   position: relative;
   z-index: 2;
-}
-
-/* subtle glow circles (optional, keep for styling) */
-.landing::before,
-.landing::after {
-  content: "";
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(45px);
-  opacity: 0.35;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.landing::before {
-  width: 420px;
-  height: 420px;
-  background: rgba(105, 160, 255, 0.35);
-  top: -120px;
-  right: -140px;
-}
-
-.landing::after {
-  width: 320px;
-  height: 320px;
-  background: rgba(246, 196, 106, 0.25);
-  bottom: -120px;
-  left: -80px;
 }
 
 .landing-inner {
@@ -104,31 +75,22 @@ body {
   text-align: center;
 }
 
-.landing-label {
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin: 0 0 1.5rem;
-}
-
 .landing-title {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   line-height: 1.05;
-  margin: 0 0 1rem;
+  margin: 0 0 1.5rem;
 }
 
 .landing-subtitle {
-  margin: 0 0 2.25rem;
-  max-width: 28rem;
-  font-size: 0.98rem;
-  line-height: 1.6;
+  margin: 0 auto 2.5rem auto;
+  max-width: 34rem;
+  font-size: 1.25rem;
+  line-height: 1.8;
   color: var(--text-muted);
 }
 
 .landing-button {
   border: none;
-  outline: none;
   cursor: pointer;
   padding: 0.85rem 1.9rem;
   border-radius: 999px;
@@ -136,33 +98,25 @@ body {
   color: var(--button-text);
   font-weight: 600;
   font-size: 0.95rem;
-  letter-spacing: 0.03em;
   text-transform: uppercase;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
-  transition: transform 0.16s ease, box-shadow 0.16s ease,
-    background-color 0.16s ease;
+  transition: all 0.2s ease;
 }
 
 .landing-button:hover {
   background: var(--button-bg-hover);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   box-shadow: 0 18px 55px rgba(0, 0, 0, 0.7);
 }
 
-.landing-button:active {
-  transform: translateY(1px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
-}
-
+/* Landing Hint */
 .landing-hint {
-  z-index: 2;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.8rem;
   color: var(--text-muted);
 }
-
 .hint-dot {
   width: 7px;
   height: 7px;
@@ -170,7 +124,6 @@ body {
   background: var(--accent);
   animation: pulse 1.6s ease-in-out infinite;
 }
-
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -186,6 +139,7 @@ body {
   }
 }
 
+/* --- 2. INFO SECTION --- */
 .info-section {
   min-height: 100vh;
   padding: 4rem 1.75rem;
@@ -193,10 +147,8 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  backdrop-filter: blur(4px);
-  color: var(--text-main);
-  opacity: 0; /* initially hidden */
-  pointer-events: none; /* prevent interaction until visible */
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 0.8s ease;
 }
 
@@ -205,24 +157,18 @@ body {
   pointer-events: auto;
 }
 
-.info-inner {
-  max-width: 600px;
-}
-
 .info-inner h2 {
-  font-size: 2rem;
+  font-size: 4rem;
   margin-bottom: 1rem;
 }
-
 .info-inner p {
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 1.1rem;
   color: var(--text-muted);
   margin-bottom: 2.5rem;
 }
 
 .start-story-btn {
-  padding: 0.85rem 2rem;
+  padding: 1rem 2.5rem;
   border-radius: 999px;
   background: var(--button-bg);
   color: var(--button-text);
@@ -230,19 +176,12 @@ body {
   border: none;
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
   transition: 0.2s ease;
+  font-size: 1rem;
 }
-
 .start-story-btn:hover {
   background: var(--button-bg-hover);
   transform: translateY(-1px);
-}
-
-/* STORY ROOT (placeholder for now) */
-#story-root {
-  min-height: 100vh;
-  background: linear-gradient(to bottom, var(--bg-mid), var(--bg-dark));
 }
 
 .info-transition {
@@ -250,231 +189,205 @@ body {
   transition: opacity 0.8s ease;
   text-align: center;
 }
-
 .info-transition.visible {
   opacity: 1;
 }
 
 #countdown {
-  font-size: 30rem;
+  font-size: 15rem;
   font-weight: 700;
-  margin-bottom: 1rem;
   color: var(--accent);
-  letter-spacing: -2px;
 }
-
 #typingText {
-  font-size: 1.3rem;
-  max-width: 600px;
-  margin: 0 auto;
+  font-size: 1.2rem;
+  margin: 1.5rem auto 0;
   color: var(--text-main);
-  line-height: 1.6;
   opacity: 0;
-  transition: opacity 1s ease;
 }
 
-.hidden {
-  display: none;
+/* --- 3. LORE SECTION --- */
+.lore-section {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
 }
 
-#fade-overlay {
-  position: fixed;
+.bg-image {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: black;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1s ease;
-  z-index: 9999;
-}
-
-#fade-overlay.active {
-  opacity: 1;
-}
-
-.choose-path {
-  min-height: 100vh;
-  padding: 4rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.choose-title {
-  font-size: 2.4rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  color: var(--text-main);
-}
-
-.path-grid {
   width: 100%;
-  max-width: 1100px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.path-card {
-  height: 70vh;
-  border-radius: 18px;
-  overflow: hidden;
+  height: 100%;
   background-size: cover;
   background-position: center;
+  z-index: 0;
+  filter: brightness(0.4);
+}
+
+.lore-inner {
   position: relative;
-  cursor: pointer;
-  transition: transform 0.4s ease;
+  z-index: 2;
+  max-width: 700px;
 }
 
-.path-card:hover {
-  transform: scale(1.03);
-}
-
-/* Overlay on hover */
-.path-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+.lore-line {
   opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1s ease, transform 1s ease;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+.lore-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 4. INTRO SECTION (Fixed Layout) --- */
+
+.intro-section {
+  /* Force it to be exactly the screen height */
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* Cuts off anything that tries to stick out */
+
+  /* Flexbox to center content */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  transition: opacity 0.35s ease;
+  align-items: center;
 }
 
-.path-card:hover .path-overlay {
-  opacity: 1;
-}
-
-/* Archetype color moods */
-.drifter-card:hover .path-overlay {
-  background: rgba(90, 120, 255, 0.55);
-}
-
-.settler-card:hover .path-overlay {
-  background: rgba(255, 210, 120, 0.55);
-}
-
-.keeper-card:hover .path-overlay {
-  background: rgba(255, 100, 80, 0.55);
-}
-
-/* Placeholder background images */
-.drifter-card {
-  background-image: url("placeholder-drifter.jpg");
-}
-
-.settler-card {
-  background-image: url("placeholder-settler.jpg");
-}
-
-.keeper-card {
-  background-image: url("placeholder-keeper.jpg");
-}
-.story-selection {
-  position: relative;
-  height: 100vh; /* full screen */
+/* Video Background specific to this section */
+.intro-section .background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures video fills screen without stretching */
+  z-index: 0;
+  filter: brightness(0.4); /* Keep it dark for text readability */
+}
+
+.intro-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%; /* Fill the section */
+
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+}
+
+/* Horizontal Choices */
+.choice-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+
+  opacity: 1;
+  z-index: 10; /* Ensure buttons are above video */
+}
+
+.choice-btn {
+  flex: 1; /* Equal width */
+  min-width: 220px;
+  max-width: 350px;
+  height: 220px; /* Fixed square height */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
-  background: #000;
-}
 
-.story-title {
-  position: absolute;
-  top: 3%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  z-index: 5;
-  color: white;
-  pointer-events: none;
-}
+  background: rgba(12, 21, 36, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
 
-/* Container for the 3 cards */
-.story-cards {
-  margin-top: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-}
-
-/* Individual cards */
-.story-card {
-  flex: 1;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-/* Placeholder background images (you will replace these with your generated art later) */
-#card-drifter {
-  background: url("GAMER.png") center/cover no-repeat;
-}
-#card-settler {
-  background: url("BROTHER.png") center/cover no-repeat;
-}
-#card-keeper {
-  background: url("FATHER.png") center/cover no-repeat;
+.choice-btn:hover {
+  transform: translateY(-10px);
+  background: rgba(246, 196, 106, 0.15);
+  border-color: var(--accent);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
 }
 
-/* Hover tint overlay */
-.story-card:hover .story-overlay {
-  opacity: 1;
-}
-
-.story-overlay {
-  position: absolute;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(3px);
-  opacity: 0;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem;
-  transition: opacity 0.3s ease;
-}
-
-/* Customize mood per card */
-#card-drifter .story-overlay {
-  background: rgba(177, 40, 231, 0.35); /* blue-ish */
-}
-#card-settler .story-overlay {
-  background: rgba(44, 218, 41, 0.35); /* warm gold */
-}
-#card-keeper .story-overlay {
-  background: rgba(255, 110, 110, 0.35); /* muted red */
-}
-
-#before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2.6rem;
+.btn-title {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  z-index: 5;
-  color: white;
-  pointer-events: none;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
 }
 
-.story-card:hover #before {
+.btn-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Subtitles at bottom */
+#subtitleContainer {
+  position: absolute;
+  bottom: 10%; /* Lifted slightly to ensure it doesn't get cut off */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  padding: 0 20px;
+  z-index: 5;
+}
+
+#subtitleText {
+  display: inline-block;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 12px 24px;
+  border-radius: 8px;
+
   opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* RESPONSIVE: Stack on small screens */
+@media (max-width: 768px) {
+  .choice-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .choice-btn {
+    width: 100%;
+    height: auto; /* Allow height to shrink on mobile */
+    min-height: 100px;
+    padding: 1.5rem;
+  }
+  #subtitleContainer {
+    bottom: 5%;
+  }
 }

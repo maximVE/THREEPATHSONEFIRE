@@ -11,23 +11,24 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
+    <!-- Black fade overlay for transitions -->
     <div id="fade-overlay"></div>
+
+    <!-- 1. LANDING SECTION -->
     <div class="landing">
-      <!-- 🔥 FIXED: Video now belongs ONLY to landing page -->
       <div class="video-container">
+        <!-- Main Campfire Loop -->
         <video class="background-video" autoplay muted loop playsinline>
-          <source src="campfire.mp4" type="video/mp4" />
+          <source src="Campfire.mp4" type="video/mp4" />
         </video>
       </div>
-      <!-- END FIX -->
 
       <div class="landing-inner">
         <h1 class="landing-title">Three Paths,<br />One Fire</h1>
         <p class="landing-subtitle">
-          A quiet space to pause, breathe, and explore one possible version of
-          your life.
+          A quiet space to pause, breathe, <br />
+          and explore one possible version of your life.
         </p>
-
         <button class="landing-button" id="beginBtn">Begin the journey</button>
       </div>
 
@@ -37,7 +38,7 @@
       </div>
     </div>
 
-    <!-- 🔥 NEW INFO SECTION (appears after landing) -->
+    <!-- 2. INFO SECTION (Pre-Story) -->
     <section id="info-section" class="info-section">
       <div class="info-inner" id="infoContent">
         <h2>Before We Begin</h2>
@@ -45,62 +46,96 @@
           This experience invites you to pause and walk one quiet path. When you
           feel ready, we’ll begin together.
         </p>
-
         <button class="start-story-btn" id="startStoryBtn">
           Start the story
         </button>
       </div>
 
-      <!-- NEW: countdown + typing area -->
+      <!-- Countdown + Typing Area -->
       <div class="info-transition hidden" id="infoTransition">
         <div id="countdown">10</div>
         <p id="typingText"></p>
       </div>
     </section>
 
-    <!-- STORY ROOT (unchanged) -->
+    <!-- STORY ROOT -->
     <main id="story-root">
-      <section id="story-selection" class="story-selection">
-        <h2 class="story-title">Which story will you choose?</h2>
+      <!-- 3. LORE SECTION (Static BG + Text) -->
+      <section id="lore-section" class="lore-section hidden">
+        <!-- Background Image -->
+        <div
+          class="bg-image"
+          style="background-image: url('campfire.jpg')"
+        ></div>
 
-        <div class="story-cards">
-          <div
-            class="story-card"
-            id="card-drifter"
-            data-target="gamerpath/gamerpath.html"
-          >
-            <h3 id="before">The Drifter</h3>
-            <div class="story-overlay">
-              <h3>The Drifter</h3>
-              <p>A life shaped by escape, endings, and trying again.</p>
-            </div>
-          </div>
+        <div class="lore-inner">
+          <p class="lore-line">
+            Some people burn fast chasing every spark, afraid the dark might
+            catch them.
+          </p>
+          <p class="lore-line">
+            Some move slowly trusting routine, building quiet lives brick by
+            brick.
+          </p>
+          <p class="lore-line">
+            Others carry weight—responsibility, tradition, expectations that
+            were never theirs to choose.
+          </p>
+          <p class="lore-line">
+            Different stories. Different fires. Yet somehow all beginning in the
+            same place.
+          </p>
 
+          <!-- Continue Button (Hidden initially) -->
           <div
-            class="story-card"
-            id="card-settler"
-            data-target="brotherpath/brotherpath.html"
+            id="loreContinueContainer"
+            class="hidden"
+            style="margin-top: 3rem; opacity: 0; transition: opacity 1s"
           >
-            <h3 id="before">The Settler</h3>
-            <div class="story-overlay">
-              <h3>The Settler</h3>
-              <p>A quiet routine, a safe life — until something shifts.</p>
-            </div>
-          </div>
-
-          <div
-            class="story-card"
-            id="card-keeper"
-            data-target="fatherpath/fatherpath.html"
-          >
-            <h3 id="before">The Keeper</h3>
-            <div class="story-overlay">
-              <h3>The Keeper</h3>
-              <p>A life built on duty, weight, and unspoken sacrifice.</p>
-            </div>
+            <button class="start-story-btn" id="loreContinueBtn">
+              Continue
+            </button>
           </div>
         </div>
       </section>
+
+      <!-- 4. INTRO SECTION (Choices + Subtitles) -->
+      <section id="intro-section" class="intro-section">
+        <!-- Background Video -->
+        <video class="background-video" autoplay muted loop playsinline>
+          <source src="sky.mp4" type="video/mp4" />
+        </video>
+
+        <div class="intro-inner">
+          <!-- CHOICES (Horizontal, Center Screen) -->
+          <div class="choice-group" id="choiceGroup">
+            <button class="choice-btn" data-target="gamerpath/gamerpath.html">
+              <span class="btn-title">Path of the Drifter</span>
+              <span class="btn-desc">I crave something new.</span>
+            </button>
+            <button
+              class="choice-btn"
+              data-target="brotherpath/brotherpath.html"
+            >
+              <span class="btn-title">Path of the Keeper</span>
+              <span class="btn-desc">I need things to feel steady.</span>
+            </button>
+            <button class="choice-btn" data-target="fatherpath/settler.html">
+              <span class="btn-title">Path of the Settler</span>
+              <span class="btn-desc">I do what is expected of me.</span>
+            </button>
+          </div>
+
+          <!-- SUBTITLES (Bottom of Screen) -->
+          <div id="subtitleContainer">
+            <p id="subtitleText"></p>
+          </div>
+        </div>
+      </section>
+
+      <audio id="bg-music" loop>
+        <source src="index-ambient.mp3" type="audio/mp3" />
+      </audio>
     </main>
 
     <script src="index.js"></script>
