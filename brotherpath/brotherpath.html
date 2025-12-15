@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Path B — The Settler</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="brotherpath.css" />
+  </head>
+  <body>
+    <!-- Black fade overlay for intro/outro -->
+    <div id="fade-overlay"></div>
+
+    <!-- BEAT 1 — THE APARTMENT -->
+    <section id="beat1" class="full-section">
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="room.mp4" type="video/mp4" />
+      </video>
+      <div id="beat1Text" class="beat-text-block"></div>
+      <div id="clockContainer" class="hidden">
+        <div class="digital-clock">18:42</div>
+        <p class="click-hint" style="margin-top: 1rem; opacity: 1">
+          Tap to pass time
+        </p>
+      </div>
+    </section>
+
+    <!-- BEAT 2 — THE COUCH -->
+    <section id="beat2" class="beat-section">
+      <div class="bg-image" style="background-image: url('sit.jpg')"></div>
+      <div class="beat-inner">
+        <div id="beat2Text" class="beat-text-block"></div>
+        <div id="volumeContainer" class="hidden">
+          <div class="volume-display">
+            <span>VOL</span>
+            <div class="volume-bars">
+              <div class="vol-bar" id="volBar"></div>
+            </div>
+            <span id="volNum">12</span>
+          </div>
+          <p class="click-hint" style="margin-top: 2rem; opacity: 0.8">
+            Tap to lower the noise
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 3 — THE SCROLL -->
+    <section id="beat3" class="beat-section">
+      <video autoplay muted loop playsinline class="beat-video">
+        <source src="scroll.mp4" type="video/mp4" />
+      </video>
+      <div class="beat-inner">
+        <div id="beat3Text" class="beat-text-block"></div>
+        <div id="phoneFeed" class="hidden">
+          <div class="feed-content">
+            <div class="feed-post">
+              <div class="skeleton-img"></div>
+              <div class="skeleton-text"></div>
+            </div>
+            <div class="feed-post">
+              <div class="skeleton-img"></div>
+              <div class="skeleton-text"></div>
+            </div>
+            <div class="feed-post">
+              <div class="skeleton-img"></div>
+              <div class="skeleton-text"></div>
+              <div class="skeleton-text short"></div>
+            </div>
+            <div class="feed-post">
+              <div class="skeleton-img"></div>
+              <div class="skeleton-text"></div>
+            </div>
+            <div style="height: 600px; width: 100%"></div>
+            <div class="feed-end-marker"><p>You've seen it all.</p></div>
+          </div>
+          <div id="scrollHintOverlay">
+            <p
+              class="click-hint"
+              style="position: absolute; bottom: 20px; width: 100%"
+            >
+              Scroll down
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 4 — THE CABINET -->
+    <section id="beat4" class="beat-section">
+      <div class="bg-image" style="background-image: url('kitchen.jpg')"></div>
+      <div class="beat-inner">
+        <div id="beat4Text" class="beat-text-block"></div>
+        <div id="cabinetInteraction" class="hidden">
+          <button id="takeSketchbookBtn" class="action-btn">
+            TAKE SKETCHBOOK
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 5 — THE SCRIBBLE -->
+    <section id="beat5" class="beat-section">
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="sketch.mp4" type="video/mp4" />
+      </video>
+      <canvas id="scribbleCanvas"></canvas>
+      <div class="beat-inner" style="pointer-events: none">
+        <div id="beat5Text" class="beat-text-block"></div>
+        <div id="scribbleHint" class="hidden">
+          <p class="click-hint">Drag to scribble</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 6 — THE WALK -->
+    <section id="beat6" class="beat-section">
+      <div class="bg-image" style="background-image: url('walk.jpg')"></div>
+      <div id="stars-layer" class="stars-visual"></div>
+      <div class="beat-inner">
+        <div id="beat6Text" class="beat-text-block"></div>
+      </div>
+    </section>
+
+    <!-- BEAT 7 — THE PATH -->
+    <section id="beat7" class="beat-section">
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="walking.mp4" type="video/mp4" />
+      </video>
+      <div id="branch-overlay">
+        <div class="branch-left"></div>
+        <div class="branch-right"></div>
+        <p class="click-hint" id="branchHint">Swipe to clear path</p>
+      </div>
+      <div class="beat-inner">
+        <div id="beat7Text" class="beat-text-block"></div>
+      </div>
+    </section>
+
+    <!-- BEAT 8 — THE CLEARING -->
+    <section id="beat8" class="beat-section">
+      <div
+        class="bg-image"
+        style="background-image: url('forestpath.jpg')"
+      ></div>
+      <div class="beat-inner">
+        <div id="beat8Text" class="beat-text-block"></div>
+        <div id="bookInteraction" class="hidden">
+          <div class="book-container">
+            <div class="book-glow"></div>
+            <div class="book-cover"></div>
+          </div>
+          <p class="click-hint" style="margin-top: 2rem">Drag slowly to open</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🌟 NEW: BEAT 9 & 10 (THREE.JS CONTAINER) -->
+    <div id="three-container"></div>
+
+    <!-- BEAT 9 — THE 3D SKETCH -->
+    <section id="beat9" class="beat-section" style="background: transparent">
+      <div class="beat-inner" style="pointer-events: none">
+        <div id="beat9Text" class="beat-text-block"></div>
+      </div>
+    </section>
+
+    <!-- BEAT 10 — THE FIRE -->
+    <section id="beat10" class="beat-section" style="background: transparent">
+      <div class="beat-inner">
+        <div id="beat10Text" class="beat-text-block"></div>
+      </div>
+    </section>
+
+    <audio id="bg-music" loop>
+      <source src="ambient3.mp3" type="audio/mp3" />
+    </audio>
+
+    <script src="brotherpath.js"></script>
+  </body>
+</html>
