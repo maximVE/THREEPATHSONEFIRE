@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Drifter — Path One</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="gamerpath.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  </head>
+  <body>
+    <!-- Black fade overlay -->
+    <div id="fade-overlay"></div>
+
+    <!-- BEAT 1 — INTRO -->
+    <section id="drifter-intro" class="full-section">
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="drifter.mp4" type="video/mp4" />
+      </video>
+      <div id="text-container"></div>
+
+      <div id="intro-hold-container" class="hidden">
+        <div id="intro-circle-track">
+          <div id="intro-circle-fill"></div>
+          <span id="intro-label">Hold to Breathe</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 2 — THE DARKENING -->
+    <section id="beat2" class="beat-section">
+      <div class="beat2-background"></div>
+      <div class="beat2-text" id="beat2Text">
+        <p class="line">You park the car in your driveway.</p>
+        <p class="line">When you open the door to your house...</p>
+        <p class="line">The first thought is to go to your room.</p>
+        <p class="line">You sit down and start up the game automatically.</p>
+        <p class="line">The loading screen hums like background noise.</p>
+        <p class="line">For a moment, it feels comforting.</p>
+        <p class="line">For a moment… it feels empty.</p>
+      </div>
+      <div id="beat2Darken" class="beat2-darken"></div>
+      <div id="beat2ClickHint" class="click-hint">
+        Click repeatedly to disconnect
+      </div>
+    </section>
+
+    <!-- BEAT 3 — THE CHOICE -->
+    <section id="beat3" class="beat-section video-bg">
+      <video autoplay muted loop playsinline class="beat-video">
+        <source src="loading.mp4" type="video/mp4" />
+      </video>
+      <div class="beat-inner">
+        <p class="beat-line">You sit there, waiting for the game to load.</p>
+        <p class="beat-line">The spinning icon, the faint menu music.</p>
+        <p class="beat-line">Normally it feels comforting.</p>
+        <p class="beat-line">Tonight, it feels… slow.</p>
+        <p class="beat-line">
+          Are you excited to play — or avoiding everything else?
+        </p>
+        <div id="beat3Choices" class="hidden choice-container">
+          <button class="choice-btn" id="choiceExcited">Excited</button>
+          <button class="choice-btn" id="choiceAvoiding">Avoiding</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 4 — AIM (PASSIVE) -->
+    <section id="beat4" class="beat-section">
+      <div class="beat-bg"></div>
+      <div class="beat-inner">
+        <div id="beat4Text" class="beat-text-block"></div>
+      </div>
+    </section>
+
+    <!-- BEAT 5 — THE IMPOSSIBLE RUSH -->
+    <section id="beat5" class="beat-section video-bg hidden">
+      <video autoplay muted loop playsinline class="beat-video">
+        <source src="gamer.mp4" type="video/mp4" />
+      </video>
+
+      <div class="beat-inner">
+        <p class="beat-line">For a few minutes, everything feels familiar.</p>
+        <p class="beat-line">Your hands move on their own.</p>
+        <p class="beat-line">It’s almost comforting…</p>
+        <p class="beat-line">But you are chasing a feeling that isn't there.</p>
+
+        <div id="holdBarContainer" class="hold-bar-block hidden">
+          <p class="hold-label" id="rushLabel">Click fast to feel the rush</p>
+          <div class="hold-bar-bg">
+            <div id="holdFill"></div>
+          </div>
+          <div
+            id="letGoMessage"
+            class="hidden"
+            style="
+              margin-top: 2rem;
+              font-size: 1.5rem;
+              font-weight: bold;
+              color: var(--accent-color);
+              text-transform: uppercase;
+              letter-spacing: 0.2em;
+              text-shadow: 0 0 15px rgba(246, 196, 106, 0.5);
+              transition: opacity 1.5s ease;
+            "
+          >
+            Let go.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 6 — REALITY / STARS -->
+    <section id="beat6" class="beat-section">
+      <div class="beat6-background"></div>
+      <div id="stars-layer" class="stars-visual"></div>
+      <div class="beat-inner">
+        <div id="beat6Text" class="beat-text-block"></div>
+      </div>
+    </section>
+
+    <!-- BEAT 7 — THE COMPASS -->
+    <section id="beat7" class="beat-section">
+      <video autoplay muted loop playsinline class="beat-video">
+        <source src="wallking.mp4" type="video/mp4" />
+      </video>
+      <div class="beat-inner">
+        <div id="beat7Text" class="beat-text-block"></div>
+        <div id="compassContainer" class="hidden">
+          <div class="compass-ring">
+            <div class="compass-needle"></div>
+            <div class="compass-tick N">N</div>
+            <div class="compass-tick E">E</div>
+            <div class="compass-tick S">S</div>
+            <div class="compass-tick W">W</div>
+          </div>
+          <p class="compass-label">Drag the needle to find a path</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 8 — THE TRAIL -->
+    <section id="beat8" class="beat-section">
+      <div id="forest-canvas-container" class="canvas-bg"></div>
+      <div id="beat8-darkness" class="dark-overlay"></div>
+      <div class="beat-inner" style="z-index: 2">
+        <div id="beat8Text" class="beat-text-block"></div>
+      </div>
+    </section>
+
+    <!-- BEAT 9 — THE GLOW -->
+    <section id="beat9" class="beat-section">
+      <div id="clearing-canvas-container" class="canvas-bg"></div>
+      <div class="beat-inner" style="z-index: 2">
+        <div id="beat9Text" class="beat-text-block"></div>
+        <div id="glowContainer" class="hidden">
+          <div id="glowCircle" class="glow-ring"></div>
+          <p class="compass-label" style="color: #ffaa00; margin-top: 1rem">
+            Hold to steady the signal
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT 10 — THE EMBER (Full Screen Interaction) -->
+    <section id="beat10" class="beat-section">
+      <div id="ember-canvas-container" class="canvas-bg"></div>
+
+      <div
+        class="beat-inner"
+        style="z-index: 2; height: 100%; position: relative"
+      >
+        <!-- Text pinned to the top area -->
+        <div
+          id="beat10Text"
+          class="beat-text-block"
+          style="
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            pointer-events: none; /* Let clicks pass through text */
+          "
+        ></div>
+
+        <!-- Hint at the bottom -->
+        <div
+          id="emberContainer"
+          class="hidden"
+          style="position: absolute; bottom: 10%; left: 0; width: 100%"
+        >
+          <p
+            class="click-hint"
+            style="opacity: 1; color: #ffaa00; text-shadow: 0 0 10px black"
+          >
+            Hold anywhere to reach
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <audio id="bg-music" loop>
+      <source src="ambient1.mp3" type="audio/mp3" />
+    </audio>
+
+    <script src="gamperpath.js"></script>
+  </body>
+</html>
