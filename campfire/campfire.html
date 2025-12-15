@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Campfire</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+
+    <!-- Three.js Library -->
+    <script src="https://unpkg.com/three@0.146.0/build/three.min.js"></script>
+
+    <link rel="stylesheet" href="campfire.css" />
+  </head>
+  <body>
+    <div id="fade-overlay"></div>
+
+    <!-- 3D Background -->
+    <div id="canvas-container"></div>
+
+    <!-- UI Layer -->
+    <div id="ui-layer">
+      <div id="main-text" class="text-block"></div>
+
+      <!-- Area for dialogue bubbles -->
+      <div id="dialogue-area"></div>
+
+      <!-- The Continue Button (Hidden initially) -->
+      <button id="continue-btn" class="hidden">Continue</button>
+
+      <!-- Final Choice Modal (Hidden initially) -->
+      <div id="final-choice-container" class="hidden">
+        <p class="final-question">
+          "Would you like to share your own reflection?"
+        </p>
+        <div class="choice-buttons">
+          <button id="btn-yes">Yes</button>
+          <button id="btn-no">Not now</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="campfire.js"></script>
+  </body>
+</html>

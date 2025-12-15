@@ -1,0 +1,188 @@
+/* ... Keep root and body styles from before ... */
+:root {
+  --bg-color: #050508;
+  --text-color: #e0e0e0;
+  --accent-gold: #ffaa55;
+  --font-main: system-ui, -apple-system, sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  overflow: hidden;
+}
+
+#fade-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 100;
+  pointer-events: none;
+  transition: opacity 2s ease;
+}
+
+#canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none; /* Pass clicks to 3D */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* TEXT BLOCK */
+.text-block {
+  position: absolute;
+  top: 15%;
+  max-width: 600px;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  pointer-events: auto;
+}
+p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 1s ease;
+}
+p.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* DIALOGUE BUBBLES */
+.dialogue-bubble {
+  position: absolute;
+  background: rgba(10, 10, 15, 0.9);
+  border: 1px solid var(--accent-gold);
+  padding: 25px 35px 25px 25px; /* Extra right padding for X button */
+  border-radius: 8px;
+  max-width: 320px;
+  font-style: italic;
+  color: #fff;
+  pointer-events: auto;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(255, 170, 85, 0.2);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* CLOSE BUTTON (X) */
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.close-btn:hover {
+  color: #fff;
+}
+
+/* CONTINUE BUTTON */
+#continue-btn {
+  position: absolute;
+  bottom: 15%;
+  padding: 15px 40px;
+  background: transparent;
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 170, 85, 0.2);
+}
+#continue-btn:hover {
+  background: var(--accent-gold);
+  color: #000;
+  box-shadow: 0 0 30px rgba(255, 170, 85, 0.6);
+}
+
+/* FINAL CHOICE MODAL */
+#final-choice-container {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 40px;
+  border-radius: 10px;
+  border: 1px solid #444;
+  text-align: center;
+  pointer-events: auto;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 1s ease;
+}
+.final-question {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  opacity: 1;
+  transform: none;
+  color: #fff;
+}
+.choice-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.choice-buttons button {
+  padding: 10px 25px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+.choice-buttons button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.hidden {
+  display: none !important;
+}
