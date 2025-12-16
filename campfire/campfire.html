@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
 
-    <!-- Three.js Library -->
+    <!-- 1. Three.js Core -->
     <script src="https://unpkg.com/three@0.146.0/build/three.min.js"></script>
 
     <link rel="stylesheet" href="campfire.css" />
@@ -16,14 +16,15 @@
   <body>
     <div id="fade-overlay"></div>
 
-    <!-- 3D Background -->
+    <!-- 3D Background Container -->
     <div id="canvas-container"></div>
 
-    <!-- UI Layer -->
+    <!-- UI / Text Layer -->
     <div id="ui-layer">
+      <!-- Narrative Text -->
       <div id="main-text" class="text-block"></div>
 
-      <!-- Area for dialogue bubbles -->
+      <!-- Area where the spirit bubbles appear -->
       <div id="dialogue-area"></div>
 
       <!-- The Continue Button (Hidden initially) -->
@@ -41,6 +42,17 @@
       </div>
     </div>
 
+    <!-- ... inside body, before script ... -->
+    
+    <audio id="bg-music" loop>
+        <source src="campfire.mp3" type="audio/mp3">
+    </audio>
+
+    <script src="campfire.js"></script>
+  </body>
+</html>
+
+    <!-- 2. LOAD YOUR SCRIPT LAST -->
     <script src="campfire.js"></script>
   </body>
 </html>
