@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const archetypeData = {
         drifter: {
             name: "The Drifter",
-            line: "“I chase what moves me… even when I’m scared of where it might lead.”",
+            line: "I always tought that gaming was the life made for me, thinking that it would be how I made my money in doing so I tought that nothing else was left for me to do. Thinking that i had no other path, this journey made me realize that It is a naïve way of thinking and that purpose comes from within not from out there",
             color: 0x0088ff 
         },
         settler: {
             name: "The Settler",
-            line: "“I keep things steady… even when a part of me wants more than routine.”",
+            line: "I always thought that stability was the life made for me, thinking that my passion for digital creation was just a hobby, too risky to build a future on. In doing so, I buried the tools that made me feel alive to chase a safe paycheck. This journey made me realize that suppressing my spark isn't maturity, and that purpose comes from creating with the technology I love, not just surviving alongside it.",
             color: 0xffaa00 
         },
         keeper: {
