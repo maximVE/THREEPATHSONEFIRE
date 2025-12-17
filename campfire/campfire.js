@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         keeper: {
             name: "The Keeper", 
-            line: "“I hold things together… even when I forget to take care of myself.”",
+            line: "I always thought that stability was the life made for me, thinking that my passion for digital creation was just a hobby, too risky to build a future on. In doing so, I buried the tools that made me feel alive to chase a safe paycheck. This journey made me realize that suppressing my spark isn't maturity, and that purpose comes from creating with the technology I love, not just surviving alongside it",
             color: 0x00ff88 
         }
     };
