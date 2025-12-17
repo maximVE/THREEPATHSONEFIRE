@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         settler: {
             name: "The Settler",
-            line: "I always thought that stability was the life made for me, thinking that my passion for digital creation was just a hobby, too risky to build a future on. In doing so, I buried the tools that made me feel alive to chase a safe paycheck. This journey made me realize that suppressing my spark isn't maturity, and that purpose comes from creating with the technology I love, not just surviving alongside it.",
+            line: "I always thought that the steady rhythm of a 9-to-5 was the life made for me, thinking that because I grew up before the noise of the digital age, this standard path was the only 'real' way to live. In doing so, I thought purpose was simply about showing up and doing the work. This journey made me realize that routine isn’t the same as meaning, and that even without digital distractions, you can still lose yourself if you never ask what you actually want.",
             color: 0xffaa00 
         },
         keeper: {
